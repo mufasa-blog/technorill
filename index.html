@@ -130,6 +130,55 @@ footer{
 .tiktok-icon{color:#fff}.youtube-icon{color:#f00}.instagram-icon{color:#E4405F}
 .apple-icon{color:#fff} /* иконка iOS */
 .android-icon{color:#3DDC84} /* иконка Android ✅ */
+.video-sponsor{
+  margin:18px 0;
+  padding:16px;
+  background:rgba(0,204,102,.08);
+  border:1px solid rgba(0,204,102,.35);
+  border-left:3px solid var(--accent);
+  border-radius:10px;
+}
+
+.video-sponsor-title{
+  margin-bottom:10px;
+  color:#ccc;
+}
+
+.video-sponsor-title strong{
+  color:var(--accent2);
+}
+
+.video-sponsor-promo{
+  display:inline-block;
+  margin-bottom:12px;
+  padding:7px 10px;
+  border:1px dashed var(--accent);
+  border-radius:8px;
+}
+
+.video-sponsor-promo strong{
+  color:var(--accent2);
+}
+
+.video-sponsor-link{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  width:fit-content;
+  padding:10px 14px;
+  background:rgba(50,50,50,.7);
+  border:1px solid #444;
+  border-radius:9px;
+  color:var(--accent);
+  text-decoration:none;
+  transition:.2s;
+}
+
+.video-sponsor-link:hover{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#000;
+}
 
 /* галерея в свежих */
 .news-gallery{
@@ -294,8 +343,15 @@ footer{
 #publishHeader strong{color:var(--accent2)}
 #ppToggle,#ppCollapse{border:1px solid #444;background:#111;color:#bbb;border-radius:8px;padding:6px 10px;cursor:pointer}
 #publishPanel label{display:block;margin:10px 0 6px;font-weight:600}
-#publishPanel input,#publishPanel textarea{
-  width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#000;color:#eee
+#publishPanel input,
+#publishPanel textarea,
+#publishPanel select{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #333;
+  background:#000;
+  color:#eee;
 }
 #publishPanel textarea{min-height:120px;resize:vertical}
 #publishPanel .two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -682,6 +738,15 @@ footer{
       </div>
     </div>
 
+    <label for="fSponsor">Спонсор ролика:</label>
+<select id="fSponsor">
+  <option value="">Без спонсора</option>
+  <option value="biggeek">Big Geek</option>
+  <option value="yandex">Яндекс</option>
+  <option value="premlogin">PremLogin</option>
+  <option value="realme">Realme</option>
+</select>
+
     <div class="two-col" style="margin-top:10px">
       <div>
         <label>TikTok ссылка:</label>
@@ -785,6 +850,33 @@ document.addEventListener('DOMContentLoaded', () => {
   const fTikTok=document.getElementById('fTikTok');
   const fYouTube=document.getElementById('fYouTube');
   const fInsta=document.getElementById('fInsta');
+  const fSponsor=document.getElementById('fSponsor');
+  const sponsors = {
+  biggeek: {
+    name: 'Big Geek',
+    url: 'https://biggeek.ru',
+    button: 'Перейти на сайт'
+  },
+
+  yandex: {
+    name: 'Яндекс',
+    url: 'https://t.me/yandex',
+    button: 'Официальный ТГК'
+  },
+
+  premlogin: {
+    name: 'PremLogin',
+    url: 'https://premlogin.com/?aff=FvzhwMmB',
+    button: 'Оплатить подписку',
+    promo: 'Technorill'
+  },
+
+  realme: {
+    name: 'Realme',
+    url: 'https://realme.com/ru',
+    button: 'Официальный сайт'
+  }
+};
 
   const fieldsDesc=document.getElementById('fields-desc');
   const fieldsText=document.getElementById('fields-text');
@@ -875,6 +967,28 @@ document.addEventListener('DOMContentLoaded', () => {
       link(data.youtube,'fab fa-youtube','YouTube','youtube-icon'),
       link(data.insta,'fab fa-instagram','Instagram*','instagram-icon')
     ].filter(Boolean).join('\n    ');
+    const sponsor = sponsors[data.sponsor] || null;
+const sponsorHTML = sponsor ? `
+  <div class="video-sponsor">
+    <div class="video-sponsor-title">
+      Спонсор ролика: <strong>${esc(sponsor.name)}</strong>
+    </div>
+
+    ${sponsor.promo ? `
+      <div class="video-sponsor-promo">
+        Промокод: <strong>${esc(sponsor.promo)}</strong>
+      </div>
+    ` : ''}
+    
+    <a href="${esc(sponsor.url)}"
+       target="_blank"
+       rel="noopener sponsored"
+       class="video-sponsor-link">
+      <i class="fas fa-handshake"></i>
+      ${esc(sponsor.button)}
+    </a>
+  </div>
+` : '';
 
     return `<!-- NEWS-ITEM:${esc(data.id)}:START -->
 <div class="news-item" data-id="${esc(data.id)}" data-section="news">
@@ -882,6 +996,9 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="news-date">${esc(data.date)}</div>
   <h3>${esc(data.title)}</h3>
   ${data.desc?`<p>${esc(data.desc)}</p>`:''}
+  
+  ${sponsorHTML}
+  
   <div class="social-links">
     ${[ios, android, rest].filter(Boolean).join('\n    ')}
   </div>
@@ -932,6 +1049,7 @@ document.addEventListener('DOMContentLoaded', () => {
       data.tiktok = fTikTok.value.trim();
       data.youtube= fYouTube.value.trim();
       data.insta  = fInsta.value.trim();
+      data.sponsor = fSponsor.value;
 
       if (!data.ios && !data.android && !data.tiktok && !data.youtube && !data.insta){
         alert('Добавь хотя бы одну ссылку.'); return;
