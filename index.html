@@ -203,10 +203,26 @@ footer{
   margin: 0;
 }
 
+/* ssc */
 .partner-description {
   color: #ccc;
   line-height: 1.5;
   margin-bottom: 15px;
+}
+
+  .promo-code {
+  display: inline-block;
+  margin: 0 0 15px;
+  padding: 8px 12px;
+  background: rgba(0, 204, 102, 0.12);
+  border: 1px dashed var(--accent);
+  border-radius: 8px;
+  color: #ccc;
+}
+
+.promo-code strong {
+  color: var(--accent2);
+  letter-spacing: 0.3px;
 }
 
 .partner-links {
@@ -426,36 +442,89 @@ footer{
     <div class="post">
       <h1 style="text-align:center">Спонсоры</h1>
       <p style="text-align:center">Я горжусь своими партнерами и очень им благодарен в помощи при создании качественного контента!</p>
-      <div class="partners-grid">
-        <a href="https://biggeek.ru" target="_blank" class="partner-card">
-          <div class="partner-header">
-            <img src="https://www.google.com/s2/favicons?domain=biggeek.ru&sz=256" alt="Big Geek" class="partner-logo">
-            <h3 class="partner-name">Big Geek</h3>
-          </div>
-          <div class="partner-description">Самый дружелюбный магазин гаджетов с широким ассортиментом товаров!</div>
-          <div class="partner-links"><span class="partner-link">Официальный сайт</span></div>
-        </a>
+<div class="partners-grid">
 
-        <a href="https://realme.com/ru" target="_blank" class="partner-card">
-          <div class="partner-header">
-            <img src="https://cdn1.sgliteasset.com/imt/images/collection/collection-12181/cached/79HZCfav64d209feda0ad_1691486718_420x420.jpg" alt="Realme" class="partner-logo">
-            <h3 class="partner-name">Realme</h3>
-          </div>
-          <div class="partner-description">Производитель смартфонов и техники, предлагающий инновационные устройства по доступным ценам.</div>
-          <div class="partner-links"><span class="partner-link">Официальный сайт</span></div>
-        </a>
-
-        <a href="https://t.me/yandex" target="_blank" class="partner-card">
-          <div class="partner-header">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj4nuwxA9VMyoFHRhJbvm5aoGfjRkvMialqehB94-XWg&s=10" alt="Yandex" class="partner-logo">
-            <h3 class="partner-name">Яндекс</h3>
-          </div>
-          <div class="partner-description">Крупнейшая российская технологическая компания, разрабатывающая поисковые системы, IT-сервисы и устройства умного дома.</div>
-          <div class="partner-links"><span class="partner-link">Официальный ТГК</span></div>
-        </a>
-      </div>
+  <!-- Big Geek -->
+  <a href="https://biggeek.ru" target="_blank" class="partner-card">
+    <div class="partner-header">
+      <img src="https://www.google.com/s2/favicons?domain=biggeek.ru&sz=256"
+           alt="Big Geek"
+           class="partner-logo">
+      <h3 class="partner-name">Big Geek</h3>
     </div>
-  </div>
+
+    <div class="partner-description">
+      Самый дружелюбный магазин гаджетов с широким ассортиментом товаров!
+    </div>
+
+    <div class="partner-links">
+      <span class="partner-link">Официальный сайт</span>
+    </div>
+  </a>
+
+  <!-- Яндекс -->
+  <a href="https://t.me/yandex" target="_blank" class="partner-card">
+    <div class="partner-header">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQj4nuwxA9VMyoFHRhJbvm5aoGfjRkvMialqehB94-XWg&s=10"
+           alt="Яндекс"
+           class="partner-logo">
+      <h3 class="partner-name">Яндекс</h3>
+    </div>
+
+    <div class="partner-description">
+      Крупнейшая российская технологическая компания, разрабатывающая поисковые системы, IT-сервисы и устройства умного дома.
+    </div>
+
+    <div class="partner-links">
+      <span class="partner-link">Официальный ТГК</span>
+    </div>
+  </a>
+
+  <!-- PremLogin -->
+  <a href="https://premlogin.com/?aff=FvzhwMmB"
+     target="_blank"
+     rel="noopener sponsored"
+     class="partner-card">
+
+    <div class="partner-header">
+      <img src="https://www.google.com/s2/favicons?domain=premlogin.com&sz=256"
+           alt="PremLogin"
+           class="partner-logo">
+      <h3 class="partner-name">PremLogin</h3>
+    </div>
+
+    <div class="partner-description">
+      Сервис для оплаты зарубежных подписок, включая ChatGPT Plus, Grok и другие популярные сервисы.
+    </div>
+
+    <div class="promo-code">
+      Промокод: <strong>Technorill</strong>
+    </div>
+
+    <div class="partner-links">
+      <span class="partner-link">Перейти на сайт</span>
+    </div>
+  </a>
+
+  <!-- Realme -->
+  <a href="https://realme.com/ru" target="_blank" class="partner-card">
+    <div class="partner-header">
+      <img src="https://cdn1.sgliteasset.com/imt/images/collection/collection-12181/cached/79HZCfav64d209feda0ad_1691486718_420x420.jpg"
+           alt="Realme"
+           class="partner-logo">
+      <h3 class="partner-name">Realme</h3>
+    </div>
+
+    <div class="partner-description">
+      Производитель смартфонов и техники, предлагающий инновационные устройства по доступным ценам.
+    </div>
+
+    <div class="partner-links">
+      <span class="partner-link">Официальный сайт</span>
+    </div>
+  </a>
+
+</div>
 
   <div id="contacts" class="tab-content">
     <div class="post" style="text-align:center">
