@@ -245,6 +245,45 @@ footer{
   color: #000;
 }
 
+  .main-socials{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:35px;
+}
+
+.main-social{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 22px;
+    background:rgba(40,40,40,.55);
+    border:1px solid #333;
+    border-radius:12px;
+    color:#ddd;
+    text-decoration:none;
+    transition:.25s;
+    font-weight:600;
+}
+
+.main-social:hover{
+    transform:translateY(-2px);
+    border-color:var(--accent);
+    box-shadow:0 0 18px rgba(0,255,120,.18);
+    color:#fff;
+}
+
+.main-social i{
+    font-size:22px;
+}
+
+.youtube i{color:#ff3030;}
+.telegram i{color:#2AABEE;}
+.telegram-chat i{color:#2AABEE;}
+.tiktok i{color:#fff;}
+.instagram i{color:#E4405F;}
+
 /* ===== Панель публикации (модал) ===== */
 #publishPanel{
   position:fixed;inset:auto 12px 12px auto;width:min(560px,96vw);
@@ -332,6 +371,34 @@ footer{
     <div class="post">
       <h1 style="text-align:center">Добро пожаловать!</h1>
       <p style="text-align:center">Канал TechnoRill рассказывает о технологиях и гаджетах!</p>
+      <div class="main-socials">
+
+    <a href="https://t.me/TechnoRiLL" target="_blank" class="main-social telegram">
+        <i class="fab fa-telegram"></i>
+        Telegram-канал
+    </a>
+
+    <a href="https://t.me/+dBhzGkVB4NYwMGEy" target="_blank" class="main-social telegram-chat">
+        <i class="fas fa-comments"></i>
+        Telegram-чат
+    </a>
+
+    <a href="https://www.youtube.com/@TechnoRiLL" target="_blank" class="main-social youtube">
+        <i class="fab fa-youtube"></i>
+        YouTube
+    </a>
+
+    <a href="https://www.tiktok.com/@technorill?is_from_webapp=1&sender_device=pc" target="_blank" class="main-social tiktok">
+        <i class="fab fa-tiktok"></i>
+        TikTok
+    </a>
+
+    <a href="https://www.instagram.com/techno.rill/" target="_blank" class="main-social instagram">
+        <i class="fab fa-instagram"></i>
+        Instagram*
+    </a>
+
+</div>
     </div>
   </div>
 
