@@ -924,14 +924,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // свернуть/закрыть панель
   ppClose.addEventListener('click',()=> PUBLISH_PANEL.style.display='none');
-  let collapsed=false;
-  ppToggle.addEventListener('click',()=>{
-    collapsed=!collapsed;
-    PUBLISH_PANEL.querySelectorAll('#fields-common,#fields-desc,#fields-text,#fields-news,#fields-fresh,.section-toggle')
-      .forEach(el=> el.style.display = collapsed? 'none':'' );
-    publishBtn.style.display = collapsed? 'none':'';
-    ppToggle.textContent = collapsed ? '▸' : '▾';
+  let collapsed = false;
+
+ppToggle.addEventListener('click', () => {
+  collapsed = !collapsed;
+
+  const commonFields = PUBLISH_PANEL.querySelectorAll(
+    '#fields-common, .section-toggle'
+  );
+
+  commonFields.forEach(el => {
+    el.style.display = collapsed ? 'none' : '';
   });
+
+  publishBtn.style.display = collapsed ? 'none' : '';
+  ppToggle.textContent = collapsed ? '▸' : '▾';
+
+  if (collapsed) {
+    fieldsDesc.style.display = 'none';
+    fieldsText.style.display = 'none';
+    fieldsNews.style.display = 'none';
+    fieldsFresh.style.display = 'none';
+  } else {
+    reflectSection();
+  }
+});
 
   // выбор раздела
   let section='news';
